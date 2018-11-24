@@ -2,16 +2,18 @@ package techone.blogging.domain.entity;
 
 import java.util.Date;
 
-public class UserInfoEntity {
+public class PostInfoEntity {
     private Long id;
+
+    private String postId;
 
     private String memberId;
 
-    private String nickName;
+    private String title;
 
-    private String password;
+    private String category;
 
-    private Date registTime;
+    private String passageId;
 
     private Date addTime;
 
@@ -27,6 +29,14 @@ public class UserInfoEntity {
         this.id = id;
     }
 
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId == null ? null : postId.trim();
+    }
+
     public String getMemberId() {
         return memberId;
     }
@@ -35,28 +45,28 @@ public class UserInfoEntity {
         this.memberId = memberId == null ? null : memberId.trim();
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName == null ? null : nickName.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getCategory() {
+        return category;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setCategory(String category) {
+        this.category = category == null ? null : category.trim();
     }
 
-    public Date getRegistTime() {
-        return registTime;
+    public String getPassageId() {
+        return passageId;
     }
 
-    public void setRegistTime(Date registTime) {
-        this.registTime = registTime;
+    public void setPassageId(String passageId) {
+        this.passageId = passageId == null ? null : passageId.trim();
     }
 
     public Date getAddTime() {

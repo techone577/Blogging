@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="techone.blogging.persistence.UserInfoEntityMapper" >
+  <resultMap id="BaseResultMap" type="techone.blogging.domain.entity.UserInfoEntity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="member_id" property="memberId" />
+    <result column="nick_name" property="nickName" />
+    <result column="password" property="password" />
+    <result column="regist_time" property="registTime" />
+    <result column="add_time" property="addTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="del_flag" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, member_id, nick_name, password, regist_time, add_time, update_time, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user_info
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="techone.blogging.domain.entity.UserInfoEntity" >
+    insert into user_info (id, member_id, nick_name, 
+      password, regist_time, add_time, 
+      update_time, del_flag)
+    values (#{id}, #{memberId}, #{nickName}, 
+      #{password}, #{registTime}, #{addTime}, 
+      #{updateTime}, #{delFlag})
+  </insert>
+  <insert id="insertSelective" parameterType="techone.blogging.domain.entity.UserInfoEntity" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="registTime != null" >
+        regist_time,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="memberId != null" >
+        #{memberId},
+      </if>
+      <if test="nickName != null" >
+        #{nickName},
+      </if>
+      <if test="password != null" >
+        #{password},
+      </if>
+      <if test="registTime != null" >
+        #{registTime},
+      </if>
+      <if test="addTime != null" >
+        #{addTime},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="techone.blogging.domain.entity.UserInfoEntity" >
+    update user_info
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName},
+      </if>
+      <if test="password != null" >
+        password = #{password},
+      </if>
+      <if test="registTime != null" >
+        regist_time = #{registTime},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="techone.blogging.domain.entity.UserInfoEntity" >
+    update user_info
+    set member_id = #{memberId},
+      nick_name = #{nickName},
+      password = #{password},
+      regist_time = #{registTime},
+      add_time = #{addTime},
+      update_time = #{updateTime},
+      del_flag = #{delFlag}
+    where id = #{id}
+  </update>
+</mapper>

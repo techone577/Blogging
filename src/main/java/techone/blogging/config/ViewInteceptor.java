@@ -19,7 +19,6 @@ public class ViewInteceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle (HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOG.info("拦截路径信息:{}",request.getPathInfo());
         return true;
     }
 

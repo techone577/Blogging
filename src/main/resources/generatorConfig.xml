@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <!--<classPathEntry location="mysql-connector-java-5.1.12-bin.jar" />-->
+	
+  <context id="DB2Tables" targetRuntime="MyBatis3">
+
+    <!-- 取消生成的代码注释 -->
+    <commentGenerator>
+    	<property name="suppressAllComments" value="true" />
+    </commentGenerator>
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/blogging?useUnicode=true&amp;allowPublicKeyRetrieval=true&amp;characterE9ncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
+        userId="techone577"
+        password="techone577">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="techone.blogging.domain.entity" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="config.mapper"  targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="techone.blogging.persistence" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+	
+	<table tableName="comments"     domainObjectName="CommentsEntity"     enableCountByExample="false" 	enableUpdateByExample="false"
+	enableDeleteByExample="false"	enableSelectByExample="false" 	selectByExampleQueryId="false"/>
+
+	<!--<table tableName="vcl_record"     domainObjectName="VclRecordEntity"     enableCountByExample="false" 	enableUpdateByExample="false"
+	enableDeleteByExample="false"	enableSelectByExample="false" 	selectByExampleQueryId="false"/>-->
+
+	<!--<table tableName="vcl_repayment"     domainObjectName="VclRepaymentEntity"     enableCountByExample="false" 	enableUpdateByExample="false"
+	enableDeleteByExample="false"	enableSelectByExample="false" 	selectByExampleQueryId="false"/>-->
+
+	<!--<table tableName="sign"     domainObjectName="PccSignEntity"     enableCountByExample="false" 	enableUpdateByExample="false"
+	enableDeleteByExample="false"	enableSelectByExample="false" 	selectByExampleQueryId="false"/>-->
+
+  </context>
+</generatorConfiguration>

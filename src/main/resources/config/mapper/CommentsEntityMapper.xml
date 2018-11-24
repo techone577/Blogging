@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="techone.blogging.persistence.CommentsEntityMapper" >
+  <resultMap id="BaseResultMap" type="techone.blogging.domain.entity.CommentsEntity" >
+    <id column="id" property="id" />
+    <result column="comment_id" property="commentId"/>
+    <result column="post_id" property="postId"/>
+    <result column="author_id" property="authorId"/>
+    <result column="answer_user_id" property="answerUserId"/>
+    <result column="answered_user_id" property="answeredUserId"/>
+    <result column="answer_time" property="answerTime"/>
+    <result column="add_time" property="addTime"/>
+    <result column="update_time" property="updateTime"/>
+    <result column="del_flag" property="delFlag"/>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="techone.blogging.domain.entity.CommentsEntity" extends="BaseResultMap" >
+    <result column="content" property="content"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, comment_id, post_id, author_id, answer_user_id, answered_user_id, answer_time, 
+    add_time, update_time, del_flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comments
+    where id = #{id,}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from comments
+    where id = #{id,}
+  </delete>
+  <insert id="insert" parameterType="techone.blogging.domain.entity.CommentsEntity" >
+    insert into comments (id, comment_id, post_id, 
+      author_id, answer_user_id, answered_user_id, 
+      answer_time, add_time, update_time, 
+      del_flag, content)
+    values (#{id}, #{commentId}, #{postId}, 
+      #{authorId}, #{answerUserId}, #{answeredUserId}, 
+      #{answerTime}, #{addTime}, #{updateTime}, 
+      #{delFlag}, #{content})
+  </insert>
+  <insert id="insertSelective" parameterType="techone.blogging.domain.entity.CommentsEntity" >
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="postId != null" >
+        post_id,
+      </if>
+      <if test="authorId != null" >
+        author_id,
+      </if>
+      <if test="answerUserId != null" >
+        answer_user_id,
+      </if>
+      <if test="answeredUserId != null" >
+        answered_user_id,
+      </if>
+      <if test="answerTime != null" >
+        answer_time,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="commentId != null" >
+        #{commentId},
+      </if>
+      <if test="postId != null" >
+        #{postId},
+      </if>
+      <if test="authorId != null" >
+        #{authorId},
+      </if>
+      <if test="answerUserId != null" >
+        #{answerUserId},
+      </if>
+      <if test="answeredUserId != null" >
+        #{answeredUserId},
+      </if>
+      <if test="answerTime != null" >
+        #{answerTime},
+      </if>
+      <if test="addTime != null" >
+        #{addTime},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag},
+      </if>
+      <if test="content != null" >
+        #{content},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="techone.blogging.domain.entity.CommentsEntity" >
+    update comments
+    <set >
+      <if test="commentId != null" >
+        comment_id = #{commentId},
+      </if>
+      <if test="postId != null" >
+        post_id = #{postId},
+      </if>
+      <if test="authorId != null" >
+        author_id = #{authorId},
+      </if>
+      <if test="answerUserId != null" >
+        answer_user_id = #{answerUserId},
+      </if>
+      <if test="answeredUserId != null" >
+        answered_user_id = #{answeredUserId},
+      </if>
+      <if test="answerTime != null" >
+        answer_time = #{answerTime},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag},
+      </if>
+      <if test="content != null" >
+        content = #{content},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="techone.blogging.domain.entity.CommentsEntity" >
+    update comments
+    set comment_id = #{commentId},
+      post_id = #{postId},
+      author_id = #{authorId},
+      answer_user_id = #{answerUserId},
+      answered_user_id = #{answeredUserId},
+      answer_time = #{answerTime},
+      add_time = #{addTime},
+      update_time = #{updateTime},
+      del_flag = #{delFlag},
+      content = #{content}
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="techone.blogging.domain.entity.CommentsEntity" >
+    update comments
+    set comment_id = #{commentId},
+      post_id = #{postId},
+      author_id = #{authorId},
+      answer_user_id = #{answerUserId},
+      answered_user_id = #{answeredUserId},
+      answer_time = #{answerTime},
+      add_time = #{addTime},
+      update_time = #{updateTime},
+      del_flag = #{delFlag}
+    where id = #{id}
+  </update>
+</mapper>
