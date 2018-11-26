@@ -50,8 +50,7 @@
                         <input name="Password" type="text" class="form-control" id="password" placeholder="Password" required/>
                     </div>
                     <div class="col-md-7 col-sm-7 col-xs-7" style="margin-top: 10px;text-align:right">
-                        <button type="button" class="tm-btn-subscribe" id="register_btn" >注册</button>
-                        <button type="submit" class="tm-btn-subscribe" id="login_btn">登录</button>
+                        <button type="button" class="admin_sign_in_btn" id="login_btn">登录</button>
                     </div>
 
                 </div>
