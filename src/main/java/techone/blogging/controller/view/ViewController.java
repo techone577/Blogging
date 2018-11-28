@@ -25,4 +25,9 @@ public class ViewController {
     public String getRegistryView () {
         return "sign_up";
     }
+
+    @RequestMapping(value = "/t")
+    public String getTest(){
+        return "editor";
+    }
 }

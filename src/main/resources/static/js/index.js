@@ -116,7 +116,7 @@ $(function () {
     };
     function getPage() {
       return {
-          test:"/view/sign/sign_in"
+          test:"/view/sign/t"
       }
     }
 });
