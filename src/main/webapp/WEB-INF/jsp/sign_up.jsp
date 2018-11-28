@@ -83,9 +83,9 @@
     <div class="main" style="position: relative">
         <h4 class="title">
             <div class="normal-title">
-                <a class="" href="/view/sign_in">登录</a>
+                <a class="" href="${pageContext.request.contextPath}/view/sign/sign_in">登录</a>
                 <b>·</b>
-                <a id="js-sign-up-btn" class="active" href="/view/sign_up">注册</a>
+                <a id="js-sign-up-btn" class="active" href="/view/sign/sign_up">注册</a>
             </div>
         </h4>
         <div class="js-sign-up-container">

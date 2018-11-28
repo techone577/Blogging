@@ -24,7 +24,8 @@ public class HTTPRedirectConfig {
                 SecurityConstraint securityConstraint = new SecurityConstraint();
                 securityConstraint.setUserConstraint("CONFIDENTIAL");
                 SecurityCollection collection = new SecurityCollection();
-                collection.addPattern("/view/sign_in/*");
+                collection.addPattern("/view/sign/*");
+                collection.addPattern("/api/index/*");
                 securityConstraint.addCollection(collection);
                 context.addConstraint(securityConstraint);
             }

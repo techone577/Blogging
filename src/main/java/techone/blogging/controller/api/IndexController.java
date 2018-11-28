@@ -20,9 +20,9 @@ public class IndexController {
 
     @RequestMapping(value = "/sign_in",method = RequestMethod.POST)
     public Response signIn(@Json SignInReqDTO reqDTO){
-        LOG.info("用户登录入参：{}",reqDTO.toString());
+        LOG.info("root用户登录入参：{}",reqDTO.toString());
         Response response = ResponseBuilder.build(true,reqDTO);
-        LOG.info("用户登录出参：{}",response);
+        LOG.info("root用户登录出参：{}",response);
         return response;
     }
 }

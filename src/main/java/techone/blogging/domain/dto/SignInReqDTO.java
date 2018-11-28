@@ -8,23 +8,23 @@ import javax.validation.constraints.NotBlank;
  */
 public class SignInReqDTO {
 
-    private String phoneNum;
+    private String rootUserName;
 
-    private String password;
+    private String rootPassword;
 
-    public String getPhoneNum () {
-        return phoneNum;
+    public String getRootUserName () {
+        return rootUserName;
     }
 
-    public void setPhoneNum (String phoneNum) {
-        this.phoneNum = phoneNum;
+    public void setRootUserName (String rootUserName) {
+        this.rootUserName = rootUserName;
     }
 
-    public String getPassword () {
-        return password;
+    public String getRootPassword () {
+        return rootPassword;
     }
 
-    public void setPassword (String password) {
-        this.password = password;
+    public void setRootPassword (String rootPassword) {
+        this.rootPassword = rootPassword;
     }
 }

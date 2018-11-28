@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2018/11/6
  */
 @Controller
-@RequestMapping(value = "/view")
+@RequestMapping(value = "/view/sign")
 public class ViewController {
 
     @RequestMapping(value = "/index")

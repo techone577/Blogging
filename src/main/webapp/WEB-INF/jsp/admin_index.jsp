@@ -40,21 +40,21 @@
             <header class="mb-5"><h1>Blogging</h1></header>
             <P class="mb-5">年轻人的第一个博客</P>
 
-            <form action="#" method="post" class="subscribe-form">
+            <%--<form action="${pageContext.request.contextPath}/api/index/sign_in" method="post" class="subscribe-form" id="root_sign_in_form">--%>
                 <div class="row form-section">
 
                     <div class="col-md-7 col-sm-7 col-xs-7">
-                        <input name="AdminName" type="text" class="form-control" id="userName" placeholder="UserName" required/>
+                        <input name="rootUserName" type="text" class="form-control" id="AdminName" placeholder="UserName" required/>
                     </div>
                     <div class="col-md-7 col-sm-7 col-xs-7" style="margin-top: 10px">
-                        <input name="Password" type="text" class="form-control" id="password" placeholder="Password" required/>
+                        <input name="rootPassword" type="text" class="form-control" id="AdminPassword" placeholder="Password" required/>
                     </div>
                     <div class="col-md-7 col-sm-7 col-xs-7" style="margin-top: 10px;text-align:right">
-                        <button type="button" class="admin_sign_in_btn" id="login_btn">登录</button>
+                        <button type="submit" class="tm-btn-subscribe" id="admin_sign_in_btn">登录</button>
                     </div>
 
                 </div>
-            </form>
+            <%--</form>--%>
 
             <div class="tm-social-icons-container text-xs-center">
                 <a href="#" class="tm-social-link"><i class="fa fa-weixin"></i></a>
@@ -71,6 +71,7 @@
 </div>
 </body>
 
+<script type="text/javascript" src = "/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="/js/particles.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/index.js"></script>
