@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/editor/css/editormd.css">
     <link rel="stylesheet" href="/css/elements/customButton.css">
     <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
-    <link rel="stylesheet" href="/css/elements/bubbly-button.css">
+    <link rel="stylesheet" href="/css/elements/bubbly-button.css">`
 
 
 </head>
