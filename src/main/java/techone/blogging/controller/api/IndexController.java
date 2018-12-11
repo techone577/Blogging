@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import techone.blogging.anotation.Json;
 import techone.blogging.domain.builder.ResponseBuilder;
+import techone.blogging.domain.dto.PostSubmitDTO;
 import techone.blogging.domain.dto.SignInReqDTO;
 import techone.blogging.domain.util.Response;
 
@@ -18,11 +19,17 @@ public class IndexController {
 
     private static final Logger LOG = LoggerFactory.getLogger(IndexController.class);
 
-    @RequestMapping(value = "/sign_in",method = RequestMethod.POST)
-    public Response signIn(@Json SignInReqDTO reqDTO){
-        LOG.info("root用户登录入参：{}",reqDTO.toString());
-        Response response = ResponseBuilder.build(true,reqDTO);
-        LOG.info("root用户登录出参：{}",response);
+    @RequestMapping(value = "/sign_in", method = RequestMethod.POST)
+    public Response signIn (@Json SignInReqDTO reqDTO) {
+        LOG.info("root用户登录入参：{}", reqDTO.toString());
+        Response response = ResponseBuilder.build(true, reqDTO);
+        LOG.info("root用户登录出参：{}", response);
         return response;
+    }
+
+    @RequestMapping(value = "/post_submit", method = RequestMethod.POST)
+    public Response postSubmit (@Json PostSubmitDTO postSubmitDTO) {
+        String content = postSubmitDTO.getContent();
+        return null;
     }
 }

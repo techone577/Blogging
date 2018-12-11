@@ -23,11 +23,10 @@
     <textarea id="my-editormd-markdown-doc" name="my-editormd-markdown-doc" style="display:none;"></textarea>
     <!-- 注意：name属性的值-->
     <textarea id="my-editormd-html-code" name="my-editormd-html-code" style="display:none;"></textarea>
-    <a href="#" data-title="Awesome Button"></a>
 </div>
 <div id="hhh" >
     <aButton  id="admin_sign_in_btn" data-title="返回"></aButton>
-    <button class="bubbly-button">保存</button>
+    <button class="bubbly-button" id ="post_submit_btn">保存</button>
 </div>
 </body>
 
@@ -35,18 +34,5 @@
 <script type="text/javascript" src="/editor/js/editormd.js"></script>
 <script type="text/javascript" src="/js/elements/customButton.js"></script>
 <script type="text/javascript" src="/js/elements/bubbly-button.js"></script>
-<script type="text/javascript">
-    $(function() {
-        editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
-            width   : "90%",
-            height  : 640,
-            syncScrolling : "single",
-            path    : "/editor/lib/",//注意2：你的路径
-            saveHTMLToTextarea : true,//注意3：这个配置，方便post提交表单
-            editorTheme: "pastel-on-dark",
-            theme: "gray",
-            previewTheme: "dark"
-        });
-    });
-</script>
+<script type="text/javascript" src="/js/editor.js"></script>>
 </html>
