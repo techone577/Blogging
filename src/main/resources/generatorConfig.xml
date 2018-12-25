@@ -14,7 +14,7 @@
     	<property name="suppressAllComments" value="true" />
     </commentGenerator>
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-        connectionURL="jdbc:mysql://localhost:3306/blogging?useUnicode=true&amp;allowPublicKeyRetrieval=true&amp;characterE9ncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
+        connectionURL="jdbc:mysql://localhost:3306/eureka?useUnicode=true&amp;allowPublicKeyRetrieval=true&amp;characterE9ncoding=utf-8&amp;useSSL=false&amp;serverTimezone=GMT%2B8"
         userId="techone577"
         password="techone577">
     </jdbcConnection>
@@ -36,7 +36,7 @@
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 	
-	<table tableName="comments"     domainObjectName="CommentsEntity"     enableCountByExample="false" 	enableUpdateByExample="false"
+	<table tableName="sub_info"     domainObjectName="SubInfoEntity"     enableCountByExample="false" 	enableUpdateByExample="false"
 	enableDeleteByExample="false"	enableSelectByExample="false" 	selectByExampleQueryId="false"/>
 
 	<!--<table tableName="vcl_record"     domainObjectName="VclRecordEntity"     enableCountByExample="false" 	enableUpdateByExample="false"

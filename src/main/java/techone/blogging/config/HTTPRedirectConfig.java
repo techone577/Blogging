@@ -15,17 +15,26 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class HTTPRedirectConfig {
-    //springboot2.0不支持EmbeddedServletContainerFactory
+//    springboot2.0不支持EmbeddedServletContainerFactory
     @Bean
     public ServletWebServerFactory servletContainer() {
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
             @Override
             protected void postProcessContext(Context context) {
+                //配置http访问
+                SecurityConstraint nonSecurityConstraint = new SecurityConstraint();
+                nonSecurityConstraint.setUserConstraint("NONE");
+                SecurityCollection nonSecurityCollection = new SecurityCollection();
+                nonSecurityCollection.addPattern("/test/*");
+                nonSecurityConstraint.addCollection(nonSecurityCollection);
+                context.addConstraint(nonSecurityConstraint);
+
                 SecurityConstraint securityConstraint = new SecurityConstraint();
                 securityConstraint.setUserConstraint("CONFIDENTIAL");
                 SecurityCollection collection = new SecurityCollection();
                 collection.addPattern("/view/sign/*");
-                collection.addPattern("/api/index/*");
+                //用rest测试扣具测接口因为状态码为302/301，会强制切换请求头为get方法，或者客户端手动返回307/308
+//              collection.addPattern("/api/index/*");
                 securityConstraint.addCollection(collection);
                 context.addConstraint(securityConstraint);
             }

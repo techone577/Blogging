@@ -6,6 +6,7 @@ import org.codehaus.jackson.type.JavaType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -15,11 +16,13 @@ import techone.blogging.anotation.Json;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Map;
 
 /**
- * @author xiehui
+ * @author techoneduan
+ * @date 2018/12/13
  */
 public class JsonMapperArgumentResolver implements
         HandlerMethodArgumentResolver {
@@ -30,17 +33,17 @@ public class JsonMapperArgumentResolver implements
     private ObjectMapper objectMapper;
     private static final String PATH_DELIMITER = "/";
 
-    public JsonMapperArgumentResolver() {
+    public JsonMapperArgumentResolver () {
         this.objectMapper = ObjectMapperFactoryBean.getObjectMapper();
     }
 
-    public boolean supportsParameter(MethodParameter parameter) {
+    public boolean supportsParameter (MethodParameter parameter) {
         return parameter.hasParameterAnnotation(Json.class);
     }
 
-    public Object resolveArgument(MethodParameter parameter,
-                                  ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
-                                  WebDataBinderFactory binderFactory) throws Exception {
+    public Object resolveArgument (MethodParameter parameter,
+                                   ModelAndViewContainer mavContainer, NativeWebRequest webRequest,
+                                   WebDataBinderFactory binderFactory) throws Exception {
         try {
             Json jsonAnn = parameter.getParameterAnnotation(Json.class);
             String path = jsonAnn.path();
@@ -85,7 +88,7 @@ public class JsonMapperArgumentResolver implements
         }
     }
 
-    private String getParameterName(MethodParameter parameter) {
+    private String getParameterName (MethodParameter parameter) {
         String parameterName = null;
         for (int i = 0; i < 3; ++i) {
             try {
@@ -101,7 +104,7 @@ public class JsonMapperArgumentResolver implements
     /**
      * 获取反射的对象类型
      */
-    private JavaType getReferenceType(MethodParameter parameter, Json annt) {
+    private JavaType getReferenceType (MethodParameter parameter, Json annt) {
         Class[] types = annt.types();
         if (types.length == 1 && types[0].equals(Object.class)) {
             return objectMapper.getTypeFactory().constructType(
@@ -142,7 +145,7 @@ public class JsonMapperArgumentResolver implements
      * @return
      * @throws IOException
      */
-    private String getAllParam(NativeWebRequest webRequest) throws IOException {
+    private String getAllParam (NativeWebRequest webRequest) throws IOException {
         HttpServletRequest httpServletRequest = webRequest
                 .getNativeRequest(HttpServletRequest.class);
         String method = httpServletRequest.getMethod();

@@ -12,8 +12,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import techone.blogging.config.surpport.Base64DecodingFilter;
 import techone.blogging.config.surpport.FrameWorkFilter;
 import techone.blogging.config.surpport.JsonMapperArgumentResolver;
+
 import java.util.List;
 
 /**
@@ -42,33 +44,40 @@ public class MvcConfig implements WebMvcConfigurer {
 
     //静态资源配置
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers (ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
     @Bean
-    public JsonMapperArgumentResolver jsonMapperArgumentResolver(){
+    public JsonMapperArgumentResolver jsonMapperArgumentResolver () {
         JsonMapperArgumentResolver jsonMapperArgumentResolver = new JsonMapperArgumentResolver();
         return jsonMapperArgumentResolver;
     }
+
     @Override
-    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+    public void addArgumentResolvers (List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(jsonMapperArgumentResolver());
 
     }
 
     //过滤器
     @Bean
-    public FilterRegistrationBean filterRegistrationBean(){
+    public FilterRegistrationBean filterRegistrationBean () {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(base64DecodingFilter());
         filterRegistrationBean.setFilter(frameWorkFilter());
         filterRegistrationBean.addUrlPatterns("/api/*");
         return filterRegistrationBean;
     }
 
     @Bean
-    public FrameWorkFilter frameWorkFilter(){
+    public FrameWorkFilter frameWorkFilter () {
         return new FrameWorkFilter();
+    }
+
+    @Bean
+    public Base64DecodingFilter base64DecodingFilter () {
+        return new Base64DecodingFilter();
     }
 
 
