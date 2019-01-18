@@ -30,4 +30,9 @@ public class ViewController {
     public String getTest(){
         return "editor";
     }
+
+    @RequestMapping(value = "/home")
+    public String getHome(){
+        return "homePage";
+    }
 }
