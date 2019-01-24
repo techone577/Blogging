@@ -35,4 +35,9 @@ public class ViewController {
     public String getHome(){
         return "homePage";
     }
+
+    @RequestMapping(value = "/search")
+    public String getSearch(){
+        return "search";
+    }
 }
